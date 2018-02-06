@@ -1,0 +1,8 @@
+---
+- name: Add uchiwa repository key
+  apt_key:
+    url: "{{ uchiwa_apt_key_url }}"
+
+- name: Add uchiwa apt-repository
+  apt_repository:
+    repo: "{{ uchiwa_apt_repo }}"

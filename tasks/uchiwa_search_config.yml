@@ -1,0 +1,30 @@
+---
+- name: Set list of path to look for local Uchiwa configuration directory
+  set_fact:
+    uchiwa_search_config_paths: "{{ uchiwa_search_config_paths }} + [ '{{ uchiwa_search_config_path }}' ]"
+  with_items: "{{ group_names }}"
+
+- name: Check if Uchiwa configuration directory exists
+  stat:
+    path: "{{ item }}"
+  register: uchiwa_config_check
+  become: false
+  delegate_to: 127.0.0.1
+  with_first_found:
+    - files: "{{ uchiwa_search_config_paths }}"
+      skip: true
+
+- name: Set Uchiwa configuration directory
+  set_fact:
+    uchiwa_host_config_path: "{{ uchiwa_config_check.results[0].stat.path }}"
+  when:
+    - uchiwa_config_check.results[0] is defined
+    - uchiwa_config_check.results[0].stat is defined
+    - uchiwa_config_check.results[0].stat.isdir
+
+- name: Check if Uchiwa template configuration file is exists
+  stat:
+    path: "{{ uchiwa_host_config_file_path }}"
+  become: false
+  delegate_to: 127.0.0.1
+  register: uchiwa_config_check

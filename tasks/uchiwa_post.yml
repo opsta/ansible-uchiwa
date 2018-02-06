@@ -1,0 +1,10 @@
+---
+- name: Copy Uchiwa configuration file
+  template:
+    src: "{{ uchiwa_host_config_file_path }}"
+    dest: "{{ uchiwa_config_file_path }}"
+    owner: root
+    group: root
+    mode: 0644
+  when: uchiwa_config_check.stat.exists
+  notify: Restart Uchiwa

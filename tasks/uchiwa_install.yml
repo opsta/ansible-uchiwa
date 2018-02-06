@@ -1,0 +1,6 @@
+---
+- name: Install Uchiwa
+  apt:
+    name: "{{ uchiwa_apt_package }}"
+    state: present
+    update_cache: yes
