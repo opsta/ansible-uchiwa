@@ -1,6 +1,8 @@
 ---
 galaxy_info:
-  author: Opsta
+  authors:
+    - Teerawat Namsricharoensuk
+    - Eakkapan Sinlapachipwilai
   description: Ansible role to install and config Uchiwa
   company: "Opsta (Thailand) Co.,Ltd."
   license: "MIT"
