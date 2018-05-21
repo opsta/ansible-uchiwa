@@ -4,11 +4,11 @@
   with_first_found:
     - "{{ ansible_os_family }}.yml"
 
-- include_tasks: uchiwa_pre.yml
-- include_tasks: uchiwa_install.yml
+- import_tasks: uchiwa_pre.yml
+- import_tasks: uchiwa_install.yml
 
 - block: # Config Uchiwa
-  - include_tasks: uchiwa_search_config.yml
-  - include_tasks: uchiwa_post.yml
+  - import_tasks: uchiwa_search_config.yml
+  - import_tasks: uchiwa_post.yml
   tags:
     - uchiwa-config
