@@ -2,7 +2,7 @@
 uchiwa_search_config_path: "{{ playbook_dir }}/files/groups/{{ item }}/uchiwa"
 uchiwa_search_config_paths: []
 
-uchiwa_host_config_file_path: "{{ uchiwa_host_config_path | default(inventory_hostname) }}/uchiwa.json.j2"
+uchiwa_host_config_file_path: "{{ uchiwa_host_config_path | default(inventory_hostname) }}/uchiwa.json"
 uchiwa_config_file_path: /etc/sensu/uchiwa.json
 uchiwa_config_path: /etc/sensu
 
